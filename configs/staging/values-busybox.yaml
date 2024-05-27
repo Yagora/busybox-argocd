@@ -1,0 +1,10 @@
+name: thegraph
+
+image:
+  name: "busybox"
+  command:
+    command: ["sh", "-c"]
+    arguments: ["echo $lastname && tail -f /dev/null"]
+  env:
+    - name: lastname
+      value: "hello frederic"

@@ -1,0 +1,2 @@
+env: staging
+terminationGracePeriodSeconds: 20

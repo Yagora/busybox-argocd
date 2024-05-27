@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    app.kubernetes.io/instance: busybox
+  name: busybox
+  namespace: argocd
+spec:
+  destination:
+    namespace: staging
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - ../../configs/staging/values-common.yaml
+      - ../../configs/staging/values-busybox.yaml
+    path: charts/webapp
+    repoURL: https://github.com/do-now-io/kubemuluscd
+    targetRevision: HEAD
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        elbv2.k8s.azure/pod-readiness-gate-inject: enabled
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

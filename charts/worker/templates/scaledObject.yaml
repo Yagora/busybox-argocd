@@ -1,0 +1,28 @@
+{{ if .Values.autoscaling.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ .Values.name }}
+  {{ with .Values.labels }}
+  labels:
+    {{ toYaml . | indent 4 }}
+  {{ end }}
+spec:
+  scaleTargetRef:
+    name: {{ .Values.name }}
+  minReplicaCount: {{ .Values.autoscaling.minReplicas }}  # We don't want pods if the queue is empty
+  maxReplicaCount: {{ .Values.autoscaling.maxReplicas }}  # We don't want to have more than 5 replicas
+#  pollingInterval: 10 # How frequently we should go for metrics (in seconds)
+  cooldownPeriod: 10 # How many seconds should we wait for downscale
+  triggers:
+  {{ range .Values.autoscaling.queues }}
+  - type: azure-sqs-queue
+    authenticationRef:
+      name: keda-auth-azure-credentials
+    metadata:
+      queueURL: {{ .queueURL }}
+      queueLength: {{ .queueLength | quote }}
+      azureRegion: {{ .azureRegion }}
+      identityOwner: operator
+    {{ end }}
+{{ end }}
