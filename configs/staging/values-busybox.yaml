@@ -8,3 +8,6 @@ image:
   env:
     - name: lastname
       value: "hello patrick"
+
+autoscaling:
+  minReplicas: 2
