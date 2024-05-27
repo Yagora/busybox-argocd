@@ -52,28 +52,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/env: {{ .Values.env }}
 {{- end }}
 
-{{- define "webapp.affinity" -}}
-nodeAffinity:
-  requiredDuringSchedulingIgnoredDuringExecution:
-    nodeSelectorTerms:
-    - matchExpressions:
-      - key: network
-        operator: In
-        values:
-        - private
-
-podAntiAffinity:
-  preferredDuringSchedulingIgnoredDuringExecution:
-  - weight: 100
-    podAffinityTerm:
-      labelSelector:
-        matchExpressions:
-        - key: network
-          operator: In
-          values:
-          - private
-      topologyKey: topology.kubernetes.io/hostname
-{{- end }}
 
 {{- define "webapp.topologySpreadConstraints" -}}
 topologySpreadConstraints:

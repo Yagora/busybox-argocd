@@ -19,8 +19,6 @@ spec:
         {{- include "webapp.selectorLabels" . | nindent 8 }}
     spec:
       {{- include "webapp.topologySpreadConstraints" . | nindent 6 }}
-      # affinity:
-      #   {{- include "webapp.affinity" . | nindent 8 }}
       serviceAccountName: {{ .Values.serviceAccountName }}
       {{- with .Values.podSecurityContext }}
       securityContext:
