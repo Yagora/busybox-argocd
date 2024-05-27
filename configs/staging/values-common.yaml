@@ -1,2 +1,10 @@
 env: staging
 terminationGracePeriodSeconds: 20
+
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+  targetMemoryUtilizationPercentage: 80
