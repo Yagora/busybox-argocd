@@ -7,4 +7,4 @@ image:
     arguments: ["echo $lastname && tail -f /dev/null"]
   env:
     - name: lastname
-      value: "hello frederic"
+      value: "hello patrick"
