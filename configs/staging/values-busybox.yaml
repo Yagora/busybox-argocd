@@ -10,4 +10,4 @@ image:
       value: "hello patrick"
 
 autoscaling:
-  minReplicas: 2
+  minReplicas: 1
