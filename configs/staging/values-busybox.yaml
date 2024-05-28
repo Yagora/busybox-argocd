@@ -9,4 +9,6 @@ image:
     - name: lastname
       value: "Hello iexec! "
 
-
+autoscaling:
+  enabled: true
+  minReplicas: 2
