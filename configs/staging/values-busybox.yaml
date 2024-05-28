@@ -5,7 +5,11 @@ image:
   name: "busybox"
   command:
     command: ["sh", "-c"]
-    arguments: ["echo $lastname && tail -f /dev/null"]
+    arguments: ["echo $message && tail -f /dev/null"]
   env:
-    - name: lastname
-      value: "Hello iexec!"
+    - name: message
+      value: "Hola iexec!"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
