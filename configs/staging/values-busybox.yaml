@@ -11,4 +11,4 @@ image:
 
 autoscaling:
   enabled: true
-  minReplicas: 2
+  minReplicas: 1
