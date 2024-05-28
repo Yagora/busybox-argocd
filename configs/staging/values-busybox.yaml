@@ -8,8 +8,5 @@ image:
     arguments: ["echo $message && tail -f /dev/null"]
   env:
     - name: message
-      value: "Hola iexec!"
+      value: "Hello iexec!"
 
-autoscaling:
-  enabled: true
-  minReplicas: 2
