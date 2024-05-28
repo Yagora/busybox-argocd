@@ -25,7 +25,7 @@ The following table lists the configurable parameters of the Webapp chart and th
 | `resources` |  | `{}` |
 | `ingress.type` |  | `null` |
 | `ingress.hosts` |  | `[]` |
-| `autoscaling.enabled` |  | `true` |
+| `autoscaling.enabled` |  | `false` |
 | `autoscaling.minReplicas` |  | `1` |
 | `autoscaling.maxReplicas` |  | `10` |
 | `autoscaling.targetCPUUtilizationPercentage` |  | `60` |
