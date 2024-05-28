@@ -1,3 +1,4 @@
+env: staging
 name: busybox
 
 image:
