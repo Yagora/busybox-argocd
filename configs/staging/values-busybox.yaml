@@ -9,3 +9,7 @@ image:
   env:
     - name: message
       value: "Hello iexec!"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
